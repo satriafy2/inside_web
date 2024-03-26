@@ -16,10 +16,17 @@
             margin: 0;
         }
 
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
         header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 0.6rem 3rem;
+            padding-top: 0;
         }
 
         .header-nav {
@@ -37,8 +44,14 @@
         }
 
         .nav-menu > li {
-            padding: 0.2rem 1rem;
+            padding: 0.8rem 1rem;
             cursor: pointer;
+        }
+
+        .nav-menu > .selected, .nav-menu > li:hover {
+            box-shadow: 0px -18px 0px -14px rgb(0, 64, 128, 1) inset;
+            -webkit-box-shadow: 0px -18px 0px -14px rgb(0, 64, 128, 1) inset;
+            -moz-box-shadow: 0px -18px 0px -14px rgb(0, 64, 128, 1) inset;
         }
 
         .nav-search {
@@ -480,7 +493,7 @@
         <div class="header-nav">
             <ul class="nav-menu">
                 <li>SI Course</li>
-                <li>SI Library</li>
+                <li><a href="/home/libraries">SI Library</a></li>
                 <li>SI Learning Event</li>
                 <li>SI Topic</li>
             </ul>

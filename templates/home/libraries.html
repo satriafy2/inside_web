@@ -1,0 +1,135 @@
+{% extends 'home_item_list.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+
+    .items-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+
+    .library-item {
+        display: flex;
+        flex-direction: column;
+        width: 160px;
+        position: relative;
+
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 14px;
+    }
+
+    .library-locked {
+        position: absolute;
+        left: 14px;
+        top: 14px;
+
+        border-radius: 16px;
+        padding: 6px 12px;
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #004080;
+    }
+
+    .library-item > img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
+
+    .library-body, .library-footer {
+        background-color: white;
+        padding: 0 12px;
+    }
+
+    .library-title {
+        display: flex;
+        font-weight: bold;
+    }
+
+    .library-title > p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .library-title > svg {
+        font-size: 24px;
+        color: #004080;
+    }
+
+    .library-body > span {
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .library-body {
+        padding: 0.75rem;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+
+    .library-footer {
+        padding: 0.6rem 0;
+        text-align: center;
+        font-weight: bold;
+        
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="section-libraries">
+    <h2>SI Library</h2>
+    <div class="items-container">
+
+        <div class="library-item">
+            <img src="{% static 'images/library-625.jpg' %}" alt="library_thumbnail">
+            <div class="library-body">
+                <div class="library-title">
+                    <p>The Psychology of Money</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z"/></svg>
+                </div>
+                <span>by Morgan Housel</span>
+            </div>
+        </div>
+        <div class="library-item">
+            <span class="library-locked">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M6 22q-.825 0-1.412-.587T4 20V10q0-.825.588-1.412T6 8h1V6q0-2.075 1.463-3.537T12 1q2.075 0 3.538 1.463T17 6v2h1q.825 0 1.413.588T20 10v10q0 .825-.587 1.413T18 22zm6-5q.825 0 1.413-.587T14 15q0-.825-.587-1.412T12 13q-.825 0-1.412.588T10 15q0 .825.588 1.413T12 17M9 8h6V6q0-1.25-.875-2.125T12 3q-1.25 0-2.125.875T9 6z"/></svg>
+            </span>
+            <img src="{% static 'images/library-625.jpg' %}" alt="library_thumbnail">
+            <div class="library-body">
+                <div class="library-title">
+                    <p>The Psychology of Money</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z"/></svg>
+                </div>
+                <span>by Morgan Housel</span>
+            </div>
+        </div>
+
+        {% for i in '0123456789'|make_list %}
+        <div class="library-item">
+            <img src="{% static 'images/library-625.jpg' %}" alt="library_thumbnail">
+            <div class="library-body">
+                <div class="library-title">
+                    <p>The Psychology of Money</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><g fill="currentColor"><path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.18.18 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.18.18 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.18.18 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.18.18 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.18.18 0 0 0 .134-.098z"/><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/></g></svg>
+                </div>
+                <span>by Morgan Housel</span>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock 'content' %}
