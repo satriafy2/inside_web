@@ -1,0 +1,80 @@
+{% extends 'home_item_list.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .section-topic .items-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 1.4rem;
+    }
+
+    .topic-item {
+        background-color: white;
+        display: flex;
+        flex-direction: row;
+        padding: 1.2rem;
+        gap: 20px;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        max-width: 100%;
+    }
+
+    .topic-item > img {
+        width: 180px;
+        height: 110px;
+        object-fit: cover;
+    }
+
+    .topic-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .topic-body > h4, .topic-body > p {
+        margin: 0;
+    }
+
+    .topic-body > h4 {
+        font-weight: bold;
+    }
+
+    .topic-body > p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    @media only screen and (min-width: 1200px) {
+        .topic-item {
+            max-width: 546px;
+        }
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="section-topic">
+    <h2>SI Topic</h2>
+    <div class="items-container">
+
+        {% for i in '0123456789'|make_list %}
+        <div class="topic-item">
+            <img src="{% static 'images/topic-822.jpg' %}" alt="topic_thumbnail">
+            <div class="topic-body">
+                <h4>TKDN Gabungan Barang dan Jasa</h4>
+                <span>TEDxTalks</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock 'content' %}

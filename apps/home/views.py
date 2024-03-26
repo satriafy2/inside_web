@@ -7,3 +7,6 @@ def index(request):
 
 def library_view(request):
     return render(request, "home/libraries.html", {'activeMenu': 'library'})
+
+def topic_view(request):
+    return render(request, "home/topic.html", {'activeMenu': 'topic'})
