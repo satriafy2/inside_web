@@ -13,3 +13,9 @@ def topic_view(request):
 
 def learning_view(request):
     return render(request, "home/learning.html", {'activeMenu': 'learning'})
+
+def course_view(request):
+    return render(request, "home/course.html", {
+        'activeMenu': 'course',
+        'disablePagination': True
+    })
