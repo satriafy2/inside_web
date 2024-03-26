@@ -10,3 +10,6 @@ def library_view(request):
 
 def topic_view(request):
     return render(request, "home/topic.html", {'activeMenu': 'topic'})
+
+def learning_view(request):
+    return render(request, "home/learning.html", {'activeMenu': 'learning'})
