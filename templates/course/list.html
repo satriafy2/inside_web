@@ -1,0 +1,145 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .items-container {
+        display: flex;
+        gap: 2.4rem;
+        flex-wrap: wrap;
+    }
+
+    .course-item {
+        width: 370px;
+        border: 1px solid #dadada;
+        border-radius: 6px;
+    }
+
+    .course-thumbnail {
+        object-fit: cover;
+        width: 100%;
+        height: 100px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .course-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-bottom: solid 1px #dadada;
+    }
+
+    .course-body, .course-footer {
+        padding: 8px 12px;
+    }
+
+    .course-body > p {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .course-speaker {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .course-speaker > img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        object-fit: cover;
+    }
+
+    .course-speaker > .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .course-speaker > .info > span:first-child {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .course-speaker > .info > span:last-child {
+        font-size: 11px;
+    }
+
+    .course-point {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .course-point > svg {
+        font-size: 24px;
+    }
+
+    .course-point > span {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .course-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 6px;
+        padding-bottom: 0.8rem;
+    }
+
+    .course-footer > span {
+        font-weight: bold;
+        color: #004080;
+        margin: 6px 0;
+    }
+
+    .course-footer > a {
+        background-color: #00A29A;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 8px 0;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="section-course">
+    <h2>SI Course : {{ courseCategory }}</h2>
+    <div class="items-container">
+
+        {% for i in '012345678'|make_list %}
+        <div class="course-item">
+            <img class="course-thumbnail" src="{% static 'images/card_course.png' %}" alt="course_thumbnail">
+            <div class="course-body">
+                <p>TKDN Gabungan Barang dan Jasa</p>
+                <div class="course-speaker">
+                    <img src="https://img.freepik.com/premium-photo/happy-laughing-face-ordinary-man-grey-shirt-concept-charming-laugh_39688-2667.jpg?w=996" alt="speaker_profile">
+                    <div class="info">
+                        <span>Bakti Endratama</span>
+                        <span>DBS Infrastruktur</span>
+                    </div>
+                </div>
+                <div class="course-point">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275zM12 12.25"/></svg>
+                    <span>750 Point</span>
+                </div>
+            </div>
+            <div class="course-footer">
+                <span>GRATIS</span>
+                <a href="/home/course/abc">Selengkapnya</a>
+                <!-- <button>Selengkapnya</button> -->
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock 'content' %}

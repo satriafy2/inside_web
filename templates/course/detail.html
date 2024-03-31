@@ -1,0 +1,699 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .course-info {
+        display: flex;
+        gap: 1.2rem;
+
+        margin-top: 2rem;
+    }
+
+    .course-info > .description {
+        justify-content: space-between;
+    }
+
+    .course-info > .description,
+    .course-info > .description > div:last-child {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .course-info h1 {
+        font-size: 46px;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .course-info p {
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 18px;
+        line-height: 1.6rem;
+    }
+
+    .course-info span {
+        font-weight: bold;
+        color: #004080;
+        margin: 10px 0;
+    }
+
+    .course-info button {
+        background-color: #00A29A;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 16px;
+        width: max-content;
+    }
+
+    .course-info img {
+        display: none;
+        height: 360px;
+        width: 550px;
+        object-fit: cover;
+    }
+
+    .middle-banner {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        width: calc(100vw - 15px);
+        margin: 1.4rem 0;
+
+        background: rgb(27,101,184);
+        background: linear-gradient(171deg, rgba(27,101,184,1) 54%, rgba(95,199,146,1) 92%);
+    }
+
+    .middle-banner p {
+        align-self: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .middle-banner img {
+        margin-bottom: 0.7rem;
+    }
+
+    .middle-banner > div {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.4rem;
+        width: 100%;
+    }
+
+    .body-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .body-70, .body-30 {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .body-70 {
+        width: 68%;
+    }
+
+    .body-30 {
+        width: 30%;
+    }
+
+    .body-content h3 {
+        color: #004080;
+    }
+
+    .body-content p {
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 16px;
+        line-height: 1.4rem;
+    }
+
+    .body-content li {
+        color: rgba(0, 0, 0, 0.7);
+        font-size: 16;
+        margin: 5px 0;
+    }
+
+    .body-content .card {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 1rem 1.8rem;
+    }
+
+    .materials {
+        padding-inline-start: 0;
+    }
+
+    .materials li {
+        list-style: none;
+        background-color: rgb(240, 240, 240);
+        color: rgba(0, 0, 0, 0.7);
+        margin: 0.2rem 0;
+        padding: 1.2rem 1rem;
+    }
+
+    .materials li:first-child {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+
+    .materials li:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .rating-container {
+        display: flex;
+        margin-bottom: 1.6rem;
+    }
+
+    .rating-average {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        background-color: #004080;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        width: 230px;
+    }
+
+    .rating-average > span:first-child {
+        font-size: 2.6rem;
+    }
+
+    .stars-graph > div, .stars {
+        display: flex;
+        align-items: center;
+    }
+
+    .meter {
+        height: 14px;
+        width: 400px;
+        margin: 5px 1.2rem;
+        background-color: #d7d7d7;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    .meter > .filler {
+        height: 14px;
+        border-radius: 6px;
+        width: calc(76 / 100 * 400px);
+        
+        background: rgb(27,101,184);
+        background: linear-gradient(171deg, rgba(27,101,184,1) 54%, rgba(95,199,146,1) 92%);
+    }
+
+    .stars svg {
+        color: #d7d7d7;
+        font-size: 16px;
+        margin: 0 1px;
+    }
+
+    .star-yellow {
+        color: orange !important;
+    }
+
+    .reviews-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .review-top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .review-profile {
+        display: flex;
+    }
+
+    .review-profile img {
+        height: 55px;
+        width: 55px;
+        object-fit: cover;
+        border-radius: 50px;
+    }
+
+    .review-profile > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        margin-left: 1.2rem;
+    }
+
+    .review-profile span {
+        color: #00A29A;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .review-profile svg {
+        font-size: 20px;
+    }
+
+    .review-time {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .review-message {
+        margin-top: 1rem;
+        padding-left: calc(1.2rem + 55px);
+        line-height: 1.6rem;
+    }
+
+    .reviews-container button {
+        align-self: center;
+        border: 1px solid #00A29A;
+        border-radius: 6px;
+        background-color: white;
+        color: #00A29A;
+        font-weight: bold;
+        padding: 0.6rem 1.6rem;
+        width: max-content;
+    }
+
+    .section-recommend > h3 {
+        color: #6c6c6c;
+        font-size: 26px;
+    }
+
+    .section-recommend > .content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section-recommend > .content > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .section-recommend > .content > button:hover {
+        background-color: #ededed;
+    }
+
+    .section-recommend .items-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .course-item {
+        width: 350px;
+        border: 1px solid #dadada;
+        border-radius: 6px;
+    }
+
+    .course-thumbnail {
+        object-fit: cover;
+        width: 100%;
+        height: 100px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .course-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-bottom: solid 1px #dadada;
+    }
+
+    .course-body, .course-footer {
+        padding: 8px 12px;
+    }
+
+    .course-body > p {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .course-speaker {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .course-speaker > img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        object-fit: cover;
+    }
+
+    .course-speaker > .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .course-speaker > .info > span:first-child {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .course-speaker > .info > span:last-child {
+        font-size: 11px;
+    }
+
+    .course-point {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .course-point > svg {
+        font-size: 24px;
+    }
+
+    .course-point > span {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .course-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 6px;
+        padding-bottom: 0.8rem;
+    }
+
+    .course-footer > span {
+        font-weight: bold;
+        color: #004080;
+        margin: 6px 0;
+    }
+
+    .course-footer > button {
+        width: 100%;
+        background-color: #00A29A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 0;
+    }
+
+    .course-detail > div {
+        display: flex;
+        align-items: center;
+        background-color: #f3f3f3;
+        border-radius: 8px;
+        height: 36px;
+        margin: 1.6rem 0;
+        position: relative;
+    }
+
+    .course-detail > div > img {
+        left: 1rem;
+        position: absolute;
+    }
+
+    .course-detail > div > span {
+        color: #6c6c6c;
+        font-size: 14px;
+        margin-left: 6rem;
+    }
+
+    .course-certificate {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .course-certificate > img {
+        align-self: center;
+    }
+
+    .course-certificate-locked {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+
+        z-index: 9;
+    }
+
+    .course-certificate-locked > p {
+        padding: 0 2rem;
+    }
+
+    .course-certificate-locked > h3,
+    .course-certificate-locked > p {
+        color: white !important;
+        text-align: center;
+    }
+
+    .card.course-speaker,
+    .card.course-speaker > div > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card.course-speaker > div > div {
+        padding-left: 1.4rem;
+        justify-content: center;
+    }
+
+    .card.course-speaker > h3 {
+        margin-bottom: 0;
+    }
+
+    .card.course-speaker > div {
+        display: flex;
+    }
+
+    .card.course-speaker img {
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .card.course-speaker span:first-child {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .card.course-speaker span:last-child {
+        font-size: 18px;
+    }
+ 
+    @media only screen and (min-width: 1200px) {
+        .middle-banner > div {
+            width: 1200px;
+        }
+
+        .course-info img {
+            display: block;
+        }
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="course-info">
+    <div class="description">
+        <div>
+            <h1>TKDN Gabungan Barang dan Jasa</h1>
+            <p>Fusce lacinia hendrerit tortor, nec egestas ex. Donec eget laoreet purus, et bibendum ipsum. Mauris cursus, odio ac semper dictum, diam ipsum porttitor purus, eu volutpat lorem elit a ipsum. Nullam convallis tellus erat. Proin dictum tortor nulla, auctor ornare diam posuere et. Donec mattis ullamcorper odio id ultrices. Proin ac nisi non sapien pulvinar molestie.</p>
+        </div>
+        <div>
+            <span>GRATIS</span>
+            <button>Ikuti Kelas Ini</button>
+        </div>
+    </div>
+    <img class="course-image" src="{% static 'images/card_course.png' %}" alt="course_image">
+</div>
+<div class="middle-banner">
+    <div>
+        <p>Growth Your Knowledge and Get Certificate</p>
+        <img src="{% static 'images/logo-inside-white.png' %}" alt="logo-white">
+    </div>
+</div>
+<div class="body-content">
+    <div class="body-70">
+        <div class="card">
+            <h3>Tentang Kelas</h3>
+            <p>Sed suscipit erat a ante vulputate pellentesque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce pretium lacus velit, ut rhoncus elit consectetur quis. Duis cursus elit arcu, in mattis nisi blandit id. Sed ut nunc euismod, ornare libero sed, viverra tortor. Vestibulum mollis metus at suscipit fringilla. Vivamus orci ligula, varius et dolor at, pulvinar vulputate dolor.</p>
+            <ul>
+                <li>Pengantar TKDN Gabungan Barang dan Jasa</li>
+                <li>Mempelajari TKDN Gabungan Barang dan Jasa</li>
+                <li>Penjelasan TKDN Gabungan Barang dan Jasa</li>
+                <li>Alur dalam TKDN Gabungan Barang dan Jasa</li>
+                <li>Perhitungan TKDN Gabungan Barang dan Jasa</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Materi</h3>
+            <ul class="materials">
+                <li>1. Pengantar TKDN Gabungan Barang dan Jasa</li>
+                <li>2. Mempelajari TKDN Gabungan Barang dan Jasa</li>
+                <li>3 .Penjelasan TKDN Gabungan Barang dan Jasa</li>
+                <li>4. Alur dalam TKDN Gabungan Barang dan Jasa</li>
+                <li>5. Perhitungan TKDN Gabungan Barang dan Jasa</li>
+            </ul>
+        </div>
+        <div class="card review">
+            <h3>Ulasan</h3>
+            <div class="rating-container">
+                <div class="rating-average">
+                    <span>4.9</span>
+                    <span>Dari 280 User</span>
+                </div>
+                <div class="stars-graph">
+                    <div>
+                        <div class="meter">
+                            <div class="filler"></div>
+                        </div>
+                        <div class="stars">
+                            {% for i in '01234'|make_list %}
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="meter"></div>
+                        <div class="stars">
+                            {% for i in '0123'|make_list %}
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% endfor %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="meter"></div>
+                        <div class="stars">
+                            {% for i in '012'|make_list %}
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% endfor %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="meter"></div>
+                        <div class="stars">
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% for i in '012'|make_list %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="meter"></div>
+                        <div class="stars">
+                            <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% for i in '0123'|make_list %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-container">
+
+                {% for i in '0123'|make_list %}
+                <div class="card review">
+                    <div class="review-top">
+                        <div class="review-profile">
+                            <img src="https://img.freepik.com/premium-photo/happy-laughing-face-ordinary-man-grey-shirt-concept-charming-laugh_39688-2667.jpg?w=996" alt="profile_image">
+                            <div>
+                                <span>Fabian Mikko</span>
+                                <div>
+                                    {% for i in '01234'|make_list %}
+                                    <svg class="star-yellow" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <span class="review-time">2 hari yang lalu</span>
+                    </div>
+                    <div class="review-message">
+                        Vestibulum at erat gravida, volutpat massa eu, mollis quam. Donec convallis hendrerit sodales. Aliquam erat volutpat.
+                    </div>
+                </div>
+                {% endfor %}
+
+                <button>Lihat Lainnya</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="body-30">
+        <div class="card course-detail">
+            <h3>Detail Kelas</h3>
+            <div>
+                <img src="{% static 'images/icon-todolist.png' %}" alt="icon-todolist">
+                <span>5 Materi</span>
+            </div>
+            <div>
+                <img src="{% static 'images/icon-reward.png' %}" alt="icon-reward">
+                <span>20 Poin</span>
+            </div>
+        </div>
+        <div class="card course-certificate">
+            <div class="course-certificate-locked">
+                <h3>Terkunci</h3>
+                <p>Selesaikan kelas untuk mendapatkan sertifikat kelulusan kelas ini.</p>
+            </div>
+            <h3>Sertifikat</h3>
+            <img src="{% static 'images/certificate.png' %}" alt="icon-reward">
+        </div>
+        <div class="card course-speaker">
+            <h3>Instruktur</h3>
+            <div>
+                <img src="https://img.freepik.com/premium-photo/happy-laughing-face-ordinary-man-grey-shirt-concept-charming-laugh_39688-2667.jpg?w=996" alt="speaker_profile">
+                <div>
+                    <span>Bakti Endratama</span>
+                    <span>DBS Infrastruktur</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-recommend mb-3">
+    <h3>Rekomendasi Course Lainnya</h3>
+    <div class="content">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6z"/></svg>
+        </button>
+        <div class="items-container">
+
+            {% for i in '012'|make_list %}
+            <div class="course-item">
+                <img class="course-thumbnail" src="{% static 'images/card_course.png' %}" alt="course_thumbnail">
+                <div class="course-body">
+                    <p>TKDN Gabungan Barang dan Jasa</p>
+                    <div class="course-speaker">
+                        <img src="https://img.freepik.com/premium-photo/happy-laughing-face-ordinary-man-grey-shirt-concept-charming-laugh_39688-2667.jpg?w=996" alt="speaker_profile">
+                        <div class="info">
+                            <span>Bakti Endratama</span>
+                            <span>DBS Infrastruktur</span>
+                        </div>
+                    </div>
+                    <div class="course-point">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275zM12 12.25"/></svg>
+                        <span>750 Point</span>
+                    </div>
+                </div>
+                <div class="course-footer">
+                    <span>GRATIS</span>
+                    <button>Selengkapnya</button>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </button>
+    </div>
+</div>
+{% endblock 'content' %}

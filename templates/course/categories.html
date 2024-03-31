@@ -1,4 +1,4 @@
-{% extends 'home_item_list.html' %}
+{% extends 'main_layout.html' %}
 {% load static %}
 
 {% block 'head' %}
@@ -140,16 +140,20 @@
 
     .course-footer > span {
         font-weight: bold;
+        color: #004080;
+        margin: 6px 0;
     }
 
-    .course-footer > button {
-        width: 100%;
+    .course-footer > a {
         background-color: #00A29A;
-        color: white;
-        font-weight: bold;
         border: none;
         border-radius: 6px;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
         padding: 8px 0;
+        text-align: center;
+        width: 100%;
     }
 </style>
 {% endblock 'head' %}
@@ -185,7 +189,7 @@
                         </div>
                         <div class="course-footer">
                             <span>GRATIS</span>
-                            <button>Selengkapnya</button>
+                            <a href="/home/course/abc">Selengkapnya</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -221,7 +225,7 @@
                         </div>
                         <div class="course-footer">
                             <span>GRATIS</span>
-                            <button>Selengkapnya</button>
+                            <a href="/home/course/abc">Selengkapnya</a>
                         </div>
                     </div>
                     {% endfor %}

@@ -1,21 +1,36 @@
 from django.shortcuts import render
 
-# Create your views here.
-
 def index(request):
-    return render(request, "home/index.html")
+    return render(request, "home.html")
 
 def library_view(request):
-    return render(request, "home/libraries.html", {'activeMenu': 'library'})
+    return render(request, "library/list.html", {'activeMenu': 'library'})
 
 def topic_view(request):
-    return render(request, "home/topic.html", {'activeMenu': 'topic'})
+    return render(request, "topic/list.html", {'activeMenu': 'topic'})
 
 def learning_view(request):
-    return render(request, "home/learning.html", {'activeMenu': 'learning'})
+    return render(request, "learning/list.html", {'activeMenu': 'learning'})
 
 def course_view(request):
-    return render(request, "home/course.html", {
+    category = request.GET.get('category', None)
+    render_html = 'course/categories.html'
+    disable_page = True
+    
+    if category:
+        render_html = 'course/list.html'
+        disable_page = False
+        category = category.replace('-', ' ')
+
+    return render(request, render_html, {
         'activeMenu': 'course',
-        'disablePagination': True
+        'disablePagination': disable_page,
+        'courseCategory': category.title() if category else None
+    })
+
+def course_detail_view(request, courseSlug):
+    return render(request, 'course/detail.html', {
+        'activeMenu': 'course',
+        'disablePagination': True,
+        'disableBanner': True
     })
