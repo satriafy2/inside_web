@@ -34,3 +34,10 @@ def course_detail_view(request, courseSlug):
         'disablePagination': True,
         'disableBanner': True
     })
+    
+def learning_detail_view(request, learningSlug):
+    return render(request, 'learning/detail.html', {
+        'activeMenu': 'learning',
+        'disablePagination': True,
+        'disableBanner': True
+    })

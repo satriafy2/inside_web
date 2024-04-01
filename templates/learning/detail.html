@@ -1,0 +1,86 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .learning-top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .learning-title, .links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .learning-title {
+        justify-content: space-between;
+    }
+
+    .learning-title > h1 {
+        font-size: 40px;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .links > span {
+        font-weight: bold;
+        color: #004080;
+        margin: 10px 0;
+    }
+
+    .btn-register {
+        background-color: #00A29A;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 2.6rem;
+        width: max-content;
+    }
+
+    .btn-meet-url, .btn-download {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+
+        background-color: transparent;
+        color: #004080;
+        font-weight: bold;
+
+        border: 1px solid #e7e7e7;
+        border-radius: 40px;
+
+        margin-top: 1.2rem;
+        padding: 0.5rem 1.2rem;
+        width: max-content;
+        cursor: pointer;
+    }
+
+    .btn-meet-url > svg, .btn-download > svg {
+        font-size: 26px;
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="learning-top">
+    <div class="learning-title">
+        <h1>Intro to Project Tailoring</h1>
+        <div class="links">
+            <span>GRATIS</span>
+            <button class="btn-register">Daftar</button>
+            <button class="btn-meet-url">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>
+                Link Zoom
+            </button>
+            <button class="btn-download">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 22v-2h16v2zm8-4L5 9h4V2h6v7h4z"/></svg>
+                Download Virtual Background
+            </button>
+        </div>
+    </div>
+    <img src="{% static 'images/learning-thmb.jpg' %}" alt="learning_image">
+</div>
+{% endblock 'content' %}
