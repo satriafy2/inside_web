@@ -6,6 +6,7 @@
     .learning-top {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 2rem;
     }
 
     .learning-title, .links {
@@ -61,6 +62,89 @@
     .btn-meet-url > svg, .btn-download > svg {
         font-size: 26px;
     }
+
+    .learning-description {
+        border: 1px solid #e7e7e7;
+        border-radius: 8px;
+        color: #676767;
+
+        margin-bottom: 2rem;
+        padding: 1rem 2.2rem;
+    }
+
+    .section-recommend {
+        margin-bottom: 2.4rem;
+    }
+
+    .section-recommend > h3 {
+        color: #6c6c6c;
+        font-size: 26px;
+        margin-top: 0;
+    }
+
+    .section-recommend > .content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section-recommend > .content > button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .section-recommend > .content > button:hover {
+        background-color: #ededed;
+    }
+
+    .section-recommend .items-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .learning-item {
+        width: 240px;
+        display: flex;
+        flex-direction: column;
+
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    }
+
+    .learning-item > img {
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .learning-body > h4 {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .learning-item > .learning-body {
+        background-color: white;
+        padding: 0.8rem 1.2rem;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .learning-body > p {
+        margin: 0.4rem 0;
+        font-size: 12px;
+    }
+
+    .learning-body svg {
+        color: #004080;
+    }
+
+    .learning-body span {
+        margin-left: 0.4rem;
+    }
 </style>
 {% endblock 'head' %}
 
@@ -82,5 +166,45 @@
         </div>
     </div>
     <img src="{% static 'images/learning-thmb.jpg' %}" alt="learning_image">
+</div>
+<div class="learning-description">
+    <p>Hai SItizen!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a nisl laoreet, cursus nisl at, consectetur lectus. Morbi semper hendrerit magna, at ullamcorper eros aliquam ut. In eleifend nulla eget libero iaculis, quis luctus tortor volutpat. Duis non urna neque. Suspendisse orci tellus, finibus non luctus eget, mollis volutpat enim. Mauris pretium fringilla felis sed scelerisque. Pellentesque nec dolor quis erat tincidunt rutrum a sed nisl.</p>
+    <p>Cras a pellentesque odio, lacinia interdum justo. Quisque hendrerit lorem eu mauris mollis sollicitudin. Quisque pharetra commodo metus, nec pulvinar mauris iaculis ut. Nunc ac mauris leo. Duis ornare, nisl id tempor venenatis, tortor sapien pretium libero, a accumsan nisi ipsum ac diam. Proin tincidunt commodo tortor eget ornare. Cras pretium dolor ut eros fringilla, quis efficitur tortor ultricies. Cras rhoncus, odio et egestas tincidunt, elit tortor condimentum lectus, eu tincidunt nisi sapien at nunc. Quisque laoreet risus felis, a finibus sapien elementum vel. In aliquam elementum ultricies.</p>
+</div>
+<div class="section-recommend">
+    <h3>Rekomendasi Event Lainnya</h3>
+    <div class="content">
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-6-6l6-6l1.4 1.4l-4.6 4.6l4.6 4.6z"/></svg>
+        </button>
+        <div class="items-container">
+
+            {% for i in '0123'|make_list %}
+            <div class="learning-item">
+                <img src="{% static 'images/learning-thmb.jpg' %}" alt="learning_thumbnail">
+                <div class="learning-body">
+                    <h4>Pelatihan HJS</h4>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M480 128a64 64 0 0 0-64-64h-16V48.45c0-8.61-6.62-16-15.23-16.43A16 16 0 0 0 368 48v16H144V48.45c0-8.61-6.62-16-15.23-16.43A16 16 0 0 0 112 48v16H96a64 64 0 0 0-64 64v12a4 4 0 0 0 4 4h440a4 4 0 0 0 4-4ZM32 416a64 64 0 0 0 64 64h320a64 64 0 0 0 64-64V179a3 3 0 0 0-3-3H35a3 3 0 0 0-3 3Zm344-208a24 24 0 1 1-24 24a24 24 0 0 1 24-24m0 80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m-80-80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m0 80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m0 80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m-80-80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m0 80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m-80-80a24 24 0 1 1-24 24a24 24 0 0 1 24-24m0 80a24 24 0 1 1-24 24a24 24 0 0 1 24-24"/></svg>
+                        <span>July 29 2024</span>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipSTime0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/><path stroke="#000" stroke-linecap="round" d="M24.008 12v12.01l8.479 8.48"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSTime0)"/></svg>
+                        <span>10:00 - 12:00 WIB</span>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 11.5A2.5 2.5 0 0 1 9.5 9A2.5 2.5 0 0 1 12 6.5A2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7"/></svg>
+                        <span>Zoom</span>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <button type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"/></svg>
+        </button>
+    </div>
 </div>
 {% endblock 'content' %}

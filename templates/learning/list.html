@@ -59,7 +59,7 @@
     <div class="items-container">
         
         {% for i in '0123456789'|make_list %}
-        <div class="learning-item">
+        <div class="learning-item" data-slug="abc">
             <img src="{% static 'images/learning-thmb.jpg' %}" alt="learning_thumbnail">
             <div class="learning-body">
                 <h4>Pelatihan HJS</h4>
@@ -83,3 +83,18 @@
 </div>
 
 {% endblock 'content' %}
+
+{% block 'script' %}
+<script>
+    var items = document.getElementsByClassName('learning-item');
+    for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', (e) => {
+            let parentItem = e.target.closest('.learning-item'),
+                slug = parentItem.getAttribute('data-slug');
+
+            console.log(slug);
+            if (slug) window.location = '/home/learning/' + slug;
+        });
+    }
+</script>
+{% endblock 'script' %}
