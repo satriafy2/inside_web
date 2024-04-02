@@ -1,0 +1,132 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .body-content {
+        display: flex;
+    }
+
+    .body-content .card {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 1rem 1.8rem;
+    }
+
+    .card > h3 {
+        color: #004080;
+    }
+
+    .body-70, .body-30 {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .body-70 {
+        flex-grow: 1;
+    }
+
+    .body-70 > h3 {
+        margin: 0;
+    }
+
+    .body-30 {
+        margin-left: 2rem;
+        min-width: 330px;
+    }
+
+    .body-30 img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .section-detail > div {
+        display: flex;
+        align-items: center;
+        background-color: #f3f3f3;
+        border-radius: 8px;
+        height: 36px;
+        margin: 1.6rem 0;
+        position: relative;
+    }
+
+    .section-detail > div > img {
+        left: 1rem;
+        position: absolute;
+        width: auto;
+    }
+
+    .section-detail > div > span {
+        color: #6c6c6c;
+        font-size: 14px;
+        margin-left: 6rem;
+    }
+
+    .body-content h1 {
+        font-size: 2.4rem;
+        margin: 1rem 0;
+    }
+
+    .body-content > .body-70 > h3 {
+        color: #8b9b9e;
+    }
+
+    .section-button {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-button span {
+        font-weight: bold;
+        color: #004080;
+        margin: 10px 0;
+    }
+
+    .section-button button {
+        background-color: #00A29A;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 1.6rem;
+        width: max-content;
+    }
+
+    .description {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="body-content">
+    <div class="body-70">
+        <h1>The Psychology of Money</h1>
+        <h3>Author: Morgan Housel</h3>
+        <div class="section-button">
+            <span>GRATIS</span>
+            <button>Mulai Baca</button>
+        </div>
+        <div class="card section-intro">
+            <h3>Intro</h3>
+            <div class="description">
+                <p>Duis ultricies nec ipsum rutrum suscipit. Donec ut dapibus nibh, non malesuada nibh. Proin maximus velit quis dictum mattis. Donec et tortor a velit fringilla volutpat. Praesent sit amet ante non augue vestibulum aliquet. Mauris placerat metus at eros mattis pretium. Donec sodales in elit eget luctus. Curabitur sit amet consequat velit.</p>
+                <p>In tellus libero, lobortis eu nibh non, ultricies facilisis mauris. Mauris non mauris ante. Sed mollis diam ut efficitur aliquet. Aenean sed ipsum id metus scelerisque euismod placerat ac risus. Aenean cursus ante magna. Praesent auctor ipsum ac nulla ullamcorper consectetur. Suspendisse aliquet molestie facilisis. Aliquam neque tellus, volutpat eget tristique ac, consectetur vel nibh. Etiam ultricies lacus ex, at ultrices justo pretium eu. Aliquam ligula ligula, lacinia in massa vitae, eleifend convallis dolor.</p>
+            </div>
+        </div>
+    </div>
+    <div class="body-30">
+        <img src="{% static 'images/library-625.jpg' %}" alt="library_image">
+        <div class="card section-detail">
+            <h3>Detail Kelas</h3>
+            <div>
+                <img src="{% static 'images/icon-reward.png' %}" alt="icon-reward">
+                <span>10 Poin</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock 'content' %}

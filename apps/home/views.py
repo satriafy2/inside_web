@@ -41,3 +41,10 @@ def learning_detail_view(request, learningSlug):
         'disablePagination': True,
         'disableBanner': True
     })
+
+def library_detail_view(request, librarySlug):
+    return render(request, 'library/detail.html', {
+        'activeMenu': 'library',
+        'disablePagination': True,
+        'disableBanner': True
+    })
