@@ -1,0 +1,183 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block 'head' %}
+<style>
+    .body-content {
+        display: flex;
+        gap: 1.2rem;
+    }
+
+    .content-30 {
+        width: 30%;
+    }
+
+    .content-70 {
+        flex: 1;
+    }
+
+    h4, h3 {
+        margin-bottom: 0;
+    }
+
+    .main-profile {
+        background-color: white;
+        border-radius: 8px;
+        margin-top: 2.8rem;
+        padding: 1.4rem 0;
+    }
+
+    .profile-picture {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-bottom: 12px;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    .profile-picture > img {
+        position: absolute;
+        left: calc(50% - 50px);
+        top: -70px;
+
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-picture > span {
+        background: rgb(95,199,146);
+        background: linear-gradient(112deg, rgba(95,199,146,1) 0%, rgba(27,101,184,1) 57%);
+        border-radius: 8px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 6px 12px;
+        z-index: 99;
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-info > span, .profile-info > a {
+        margin: 0.25rem 0;
+    }
+
+    .profile-info > span:first-child {
+        font-weight: bold;
+    }
+
+    .summary-profile {
+        background: rgb(95,199,146);
+        background: linear-gradient(112deg, rgba(95,199,146,1) 0%, rgba(27,101,184,1) 57%);
+        border-radius: 8px;
+        padding: 1.4rem;
+    }
+
+    .summary-profile > h4, .summary-profile > p {
+        color: white;
+    }
+
+    .summary-profile > h4 {
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .summary-profile > p {
+        margin-top: 0.35rem;
+    }
+
+    .summary-points {
+        background-color: white;
+        border-radius: 8px;
+        color: #004080;
+
+        display: flex;
+        gap: 2rem;
+        padding: 1.4rem;
+
+        font-weight: bold;
+    }
+
+    .summary-points > .item {
+        flex: 1;
+    }
+
+    .summary-points > .item > div {
+        border-bottom: 1px solid rgba(0, 64, 128, 0.3);
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0.8rem;
+    }
+
+    .summary-points > .item > div > span {
+        font-size: 16px;
+    }
+
+    .summary-points > .item > h3 {
+        margin-top: 1rem;
+        font-size: 32px;
+    }
+</style>
+{% endblock 'head' %}
+
+{% block 'content' %}
+<div class="body-content">
+    <div class="content-30">
+        <div class="main-profile">
+            <div class="profile-picture">
+                <img src="https://img.freepik.com/premium-photo/happy-laughing-face-ordinary-man-grey-shirt-concept-charming-laugh_39688-2667.jpg?w=996" alt="profile_image">
+                <span>16<sup>th</sup></span>
+            </div>
+            <div class="profile-info">
+                <span>Silvia Anggraini</span>
+                <span>Divisi Human Capital</span>
+                <a href="mailto:silvia.anggraini@ptsi.co.id">silvia.anggraini@ptsi.co.id</a>
+            </div>
+        </div>
+        <div class="side-menu"></div>
+    </div>
+    <div class="content-70">
+        <div class="summary-profile">
+            <h4>Halo, Silvia Anggraini!</h4>
+            <p>Growth your Knowledge, Collect Learning Point and get Wallet</p>
+            <div class="summary-points">
+                <div class="item">
+                    <div>
+                        <span>Total Points</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275zM12 12.25"></path></svg>
+                    </div>
+                    <h3>1.200</h3>
+                </div>
+                <div class="item">
+                    <div>
+                        <span>Total Hours</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipSTime0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"></path><path stroke="#000" stroke-linecap="round" d="M24.008 12v12.01l8.479 8.48"></path></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSTime0)"></path></svg>
+                    </div>
+                    <h3>5</h3>
+                </div>  
+                <div class="item">
+                    <div>
+                        <span>Total Wallet</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M9.368 1.222a1 1 0 0 0-1.414.15L5.058 5h1.28l2.397-3.004l.77.629L7.575 5h1.288l1.417-1.744l1.718 1.403L11.7 5h.3a3 3 0 0 1 .88.131a1 1 0 0 0-.25-1.245zM3 5.5a.5.5 0 0 1 .5-.5h.558l.795-1H3.5A1.5 1.5 0 0 0 2 5.5v6A2.5 2.5 0 0 0 4.5 14H12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H3.5a.5.5 0 0 1-.5-.5m7.5 4.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1"/></svg>
+                    </div>
+                    <h3>20.000</h3>
+                </div>
+            </div>
+        </div>
+        <div class="summary-courses">
+            <div class="continue">
+                <div class="continue-course"></div>
+                <div class="continue-library"></div>
+            </div>
+            <div class="leaderboard"></div>
+        </div>
+    </div>
+</div>
+{% endblock 'content' %}
